@@ -1,0 +1,310 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montenegrin+Gothic+One&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+:root {
+  --tab-size: 340px;
+  --grid-column: repeat(6, 80px);
+  --card-size: 80px;
+}
+
+body {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(130deg, #85785d, #364447, #222f37);
+}
+body header {
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+body header .logo-container {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
+  cursor: pointer;
+}
+body header .logo-container img {
+  pointer-events: none;
+  width: 40px;
+}
+body header .logo-container h1 {
+  font-size: 3rem;
+  font-family: "Montenegrin Gothic One", serif;
+  text-shadow: 0 0 25px #364447;
+  color: #a68945;
+}
+body header nav {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body header nav ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+body header nav ul li {
+  list-style: none;
+  transition: 0.5s;
+}
+body header nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+  font-family: "Montenegrin Gothic One", serif;
+}
+body header nav ul li:hover {
+  transform: scale(1.1);
+  border-bottom: 1px solid gray;
+}
+body header .btn-box {
+  width: 100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body header .btn-box .reload-btn {
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+body header .btn-box .reload-btn:hover {
+  scale: 1.1;
+}
+body .game-tab {
+  width: var(--tab-size);
+  height: var(--tab-size);
+  display: grid;
+  grid-template-columns: var(--grid-column);
+  gap: 5px;
+}
+body .game-tab .flip-card {
+  width: var(--card-size);
+  height: var(--card-size);
+  background-color: transparent;
+  perspective: 1000px;
+  cursor: pointer;
+}
+body .game-tab .flip-card .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform-style: preserve-3d;
+}
+body .game-tab .flip-card .flip-card-inner .flip-card-front,
+body .game-tab .flip-card .flip-card-inner .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .game-tab .flip-card .flip-card-inner .flip-card-front {
+  background-image: url("../images/memory-card-background.jpg");
+  background-size: cover;
+}
+body .game-tab .flip-card .flip-card-inner .flip-card-back {
+  background-size: cover;
+  transform: rotateY(180deg);
+}
+body .game-tab .flip-card .flip-card-inner.rotate {
+  transform: rotateY(180deg);
+}
+
+.info-panel {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-30px);
+  width: 1196px;
+  height: 506px;
+  background-image: url("../images/panel-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s ease;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.info-panel .remove-panel button {
+  cursor: pointer;
+  position: absolute;
+  color: #a68945;
+  top: 32px;
+  right: 35px;
+  font-size: 35px;
+  background: none;
+  border: none;
+  transition: 0.3s;
+}
+.info-panel .remove-panel button img {
+  width: 40px;
+}
+.info-panel .remove-panel button:hover {
+  scale: 1.05;
+}
+.info-panel .remove-panel button:active {
+  scale: 0.9;
+}
+.info-panel .panel-content {
+  width: 85%;
+  height: 90%;
+  font-family: "Montenegrin Gothic One", serif;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  padding: 25px;
+  border-radius: 15px;
+  row-gap: 2px;
+}
+.info-panel .panel-content h2 {
+  width: 100%;
+  font-size: 36px;
+  color: #a68945;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+.info-panel .panel-content p {
+  font-size: 22px;
+  color: #ffc852;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+.info-panel .panel-content .menu-link {
+  text-decoration: none;
+  color: #ffb71a;
+  font-size: 25px;
+  transition: 0.5s;
+}
+.info-panel .panel-content .menu-link:hover {
+  color: #271d05;
+  text-shadow: 0 0 25px #ffb71a;
+}
+.info-panel.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+input[name=difficulty] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin: 0 5px;
+  box-shadow: 0 0 25px black;
+  border: 2px solid #b77d00;
+  border-radius: 3px;
+  transition: 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+input[name=difficulty]:hover {
+  scale: 1.1;
+}
+input[name=difficulty]:checked {
+  background-color: #ffc852;
+}
+input[name=difficulty]:checked::before {
+  position: absolute;
+  content: "✔";
+  color: black;
+  font-size: 14px;
+}
+
+.settings-volume-range {
+  height: auto;
+  margin: 0 10px;
+  cursor: pointer;
+  background-color: #ffb71a;
+  accent-color: rgb(26, 24, 11);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.settings-checkbox {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 15px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #a68945;
+}
+.settings-checkbox::before {
+  content: "";
+  top: 1px;
+  left: 2px;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #ffb71a;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.settings-checkbox.on-off::before {
+  left: 22px;
+}
+
+#volumeLabel i {
+  cursor: pointer;
+}
+
+.settings-btn {
+  width: 100px;
+  height: 40px;
+  margin: 10px;
+  font-size: 1.5rem;
+  background-color: #ffb71a;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 15px black;
+  cursor: pointer;
+  font-family: "Montenegrin Gothic One", serif;
+}
+.settings-btn:hover {
+  background-color: #a68945;
+}/*# sourceMappingURL=style.css.map */
